@@ -17,6 +17,7 @@ public class Practica1_EDD_PlantasVrsZombies {
     public static void main(String[] args) {
         // TODO code application logic here
         Gui_Inicial g = new Gui_Inicial();
+        g.setLocation(380, 300);
         g.setVisible(true); 
         g.show();
     }
