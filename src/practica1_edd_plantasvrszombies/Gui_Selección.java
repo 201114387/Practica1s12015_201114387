@@ -126,10 +126,18 @@ public class Gui_Selección extends javax.swing.JFrame {
 
     private void Btn_Jugador_Plantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Jugador_Plantas_ActionPerformed
         // TODO add your handling code here:
+        Gui_JPlantas JP = new Gui_JPlantas();
+        JP.setVisible(true);
+        this.dispose();
+        JP.show();
     }//GEN-LAST:event_Btn_Jugador_Plantas_ActionPerformed
 
     private void Btn_Jugador_Zombie_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Jugador_Zombie_ActionPerformed
         // TODO add your handling code here:
+        Gui_JZombies JZ = new Gui_JZombies();
+        JZ.setVisible(true);
+        this.dispose();
+        JZ.show();
     }//GEN-LAST:event_Btn_Jugador_Zombie_ActionPerformed
 
     private void Btn_Comenzar_Juego_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Comenzar_Juego_ActionPerformed
