@@ -5,6 +5,8 @@
  */
 package practica1_edd_plantasvrszombies;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ROBIN
@@ -33,6 +35,7 @@ public class Gui_JZombies extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Btn_Aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +52,13 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
         jLabel1.setText("Jugador Zombies");
 
+        Btn_Aceptar.setText("Aceptar");
+        Btn_Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AceptarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,21 +66,24 @@ public class Gui_JZombies extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_Nombre_JZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Cantidad_JZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(Btn_ACampos_JZombies))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
-                        .addComponent(jLabel1)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Btn_ACampos_JZombies)
+                                .addGap(30, 30, 30)
+                                .addComponent(Btn_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_Nombre_JZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_Cantidad_JZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +99,9 @@ public class Gui_JZombies extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField_Cantidad_JZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Btn_ACampos_JZombies)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn_ACampos_JZombies)
+                    .addComponent(Btn_Aceptar))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -95,7 +110,16 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_ACampos_JZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JZombiesActionPerformed
         // TODO add your handling code here:
+        String extraJZ = JOptionPane.showInputDialog(this, "Ingrese Campo Extra");
     }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
+
+    private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
+        // TODO add your handling code here:
+        Gui_Plantas p = new Gui_Plantas();
+        p.setVisible(true);
+        this.dispose();
+        p.show();
+    }//GEN-LAST:event_Btn_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +158,7 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_ACampos_JZombies;
+    private javax.swing.JButton Btn_Aceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

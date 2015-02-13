@@ -5,6 +5,8 @@
  */
 package practica1_edd_plantasvrszombies;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ROBIN
@@ -32,7 +34,8 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField_Nombre_JPlantas = new javax.swing.JTextField();
         jTextField_Cantidad_JPlantas = new javax.swing.JTextField();
-        Btn_ACampos_JPlantas = new javax.swing.JButton();
+        Btn_ACampos_JPlantas_ = new javax.swing.JButton();
+        Btn_Aceptar_ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,10 +45,17 @@ public class Gui_JPlantas extends javax.swing.JFrame {
 
         jLabel3.setText("Cantidad:");
 
-        Btn_ACampos_JPlantas.setText("Agregar Mas Campos");
-        Btn_ACampos_JPlantas.addActionListener(new java.awt.event.ActionListener() {
+        Btn_ACampos_JPlantas_.setText("Agregar Mas Campos");
+        Btn_ACampos_JPlantas_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_ACampos_JPlantasActionPerformed(evt);
+                Btn_ACampos_JPlantas_ActionPerformed(evt);
+            }
+        });
+
+        Btn_Aceptar_.setText("Aceptar");
+        Btn_Aceptar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aceptar_ActionPerformed(evt);
             }
         });
 
@@ -56,21 +66,24 @@ public class Gui_JPlantas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_Nombre_JPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Cantidad_JPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(Btn_ACampos_JPlantas))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(jLabel1)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_Nombre_JPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(jTextField_Cantidad_JPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Btn_ACampos_JPlantas_)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Aceptar_, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,21 +94,32 @@ public class Gui_JPlantas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField_Nombre_JPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField_Cantidad_JPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Btn_ACampos_JPlantas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_Cantidad_JPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn_ACampos_JPlantas_)
+                    .addComponent(Btn_Aceptar_))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_ACampos_JPlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantasActionPerformed
+    private void Btn_ACampos_JPlantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantas_ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_ACampos_JPlantasActionPerformed
+        String extraJP = JOptionPane.showInputDialog(this,"Ingrese un campo extra");
+    }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
+
+    private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
+        // TODO add your handling code here:
+        Gui_Selección s = new Gui_Selección();
+        s.setVisible(true);
+        this.dispose();
+        s.show();
+    }//GEN-LAST:event_Btn_Aceptar_ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,7 +157,8 @@ public class Gui_JPlantas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_ACampos_JPlantas;
+    private javax.swing.JButton Btn_ACampos_JPlantas_;
+    private javax.swing.JButton Btn_Aceptar_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
