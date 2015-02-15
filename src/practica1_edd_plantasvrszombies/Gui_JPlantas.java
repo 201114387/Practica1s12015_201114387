@@ -114,16 +114,17 @@ public class Gui_JPlantas extends javax.swing.JFrame {
 
     private void Btn_ACampos_JPlantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantas_ActionPerformed
         // TODO add your handling code here:
-        lista.aux.sub.InsertArBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra"));
+        //lista.aux.sub.InsertArBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra"));
+        lista.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra")); 
     }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
 
     private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
         // TODO add your handling code here:
-        lista.aux.sub.InsertAtFront(jTextField_Cantidad_JPlantas.getText());
-        lista.aux.sub.InsertAtFront(jTextField_Nombre_JPlantas.getText());
+        lista.aux.sub1.InsertAtFront(jTextField_Cantidad_JPlantas.getText());
+        lista.aux.sub1.InsertAtFront(jTextField_Nombre_JPlantas.getText());
         
         
-        Gui_Selección s = new Gui_Selección();  
+        Gui_Selección s = new Gui_Selección();
         s.setVisible(true);
         this.dispose();
         s.show();

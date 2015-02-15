@@ -130,6 +130,7 @@ public class Gui_Selección extends javax.swing.JFrame {
         JP.setVisible(true);
         this.dispose();
         JP.show();
+        Btn_Jugador_Zombie_.setVisible(true); 
     }//GEN-LAST:event_Btn_Jugador_Plantas_ActionPerformed
 
     private void Btn_Jugador_Zombie_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Jugador_Zombie_ActionPerformed

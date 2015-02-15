@@ -55,7 +55,7 @@ public class Sub_Lista_Jugador {
         auxiliar = null;
     }
     
-    public void InsertArBack(String dato)
+    public void InsertAtBack(String dato)
     {
         if(FirsNod == null){
             FirsNod = LastNod = new Nodo_jugador(dato);

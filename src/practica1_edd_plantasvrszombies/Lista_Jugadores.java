@@ -15,20 +15,21 @@ public class Lista_Jugadores {
         
         String Data;
         Nodo next;
-        Sub_Lista_Jugador sub;
+//        Sub_Lista_Jugador sub;
+        Lista_Jugadores sub1;
         
         public Nodo(String nombre){
             Data = nombre;
             next = null;
-            sub = new Sub_Lista_Jugador();
+//            sub = new Sub_Lista_Jugador();
+            sub1 = new Lista_Jugadores();
         }
-//        
-//        
-//        public Nodo(String nombre, Nodo n) {
-//            Data = nombre;
-//            next = n;
-//        }
-
+        
+        public Nodo(String dato, Nodo n){
+            Data = dato;
+            next = n;
+        }
+        
         public String getData() {
             return Data;
         }
@@ -65,6 +66,14 @@ public class Lista_Jugadores {
         }
         else{
             LastNodo = LastNodo.next = new Nodo(Name);
+        }
+    }
+    
+    public void InsertAtFront(String dato){
+        if(FirstNode == null){
+            FirstNode = LastNodo = new Nodo(dato);
+        }else{
+            FirstNode = new Nodo(dato, FirstNode);
         }
     }
     

@@ -112,13 +112,13 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_ACampos_JZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JZombiesActionPerformed
         // TODO add your handling code here:
-        listaJZ.aux.sub.InsertArBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
+        listaJZ.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
     }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
-        listaJZ.aux.sub.InsertAtFront(jTextField_Cantidad_JZombies.getText());
-        listaJZ.aux.sub.InsertAtFront(jTextField_Nombre_JZombies.getText()); 
+        listaJZ.aux.sub1.InsertAtFront(jTextField_Cantidad_JZombies.getText());
+        listaJZ.aux.sub1.InsertAtFront(jTextField_Nombre_JZombies.getText()); 
         
         Gui_Plantas p = new Gui_Plantas();
         p.setVisible(true);
