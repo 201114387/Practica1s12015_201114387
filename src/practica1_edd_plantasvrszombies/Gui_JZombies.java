@@ -12,12 +12,13 @@ import javax.swing.JOptionPane;
  * @author ROBIN
  */
 public class Gui_JZombies extends javax.swing.JFrame {
-
+    Lista_Jugadores l = Gui_JPlantas.lista;
     /**
      * Creates new form Gui_JZombies
      */
     public Gui_JZombies() {
         initComponents();
+        l.InsertAtBack("Jugador Zombie"); 
     }
 
     /**
@@ -115,6 +116,9 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
+        l.Buscar("Jugador Zombie", l.FirstNode);
+        System.out.println(l.aux.Data);
+        
         Gui_Plantas p = new Gui_Plantas();
         p.setVisible(true);
         this.dispose();

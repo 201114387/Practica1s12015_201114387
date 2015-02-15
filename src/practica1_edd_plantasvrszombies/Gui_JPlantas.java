@@ -12,12 +12,14 @@ import javax.swing.JOptionPane;
  * @author ROBIN
  */
 public class Gui_JPlantas extends javax.swing.JFrame {
-
+    static Lista_Jugadores lista = new Lista_Jugadores();
     /**
      * Creates new form Gui_JPlantas
      */
     public Gui_JPlantas() {
         initComponents();
+        lista.InsertAtBack("Lista Jugadores");
+        lista.InsertAtBack("Jugador Planta");
     }
 
     /**
@@ -115,7 +117,12 @@ public class Gui_JPlantas extends javax.swing.JFrame {
 
     private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
         // TODO add your handling code here:
-        Gui_Selección s = new Gui_Selección();
+        lista.Buscar("Jugador Planta", lista.FirstNode);
+        System.out.println(lista.aux.Data);
+        lista.aux.sub.InsertArBack(jTextField_Nombre_JPlantas.getText());
+        lista.aux.sub.InsertArBack(jTextField_Cantidad_JPlantas.getText());
+        
+        Gui_Selección s = new Gui_Selección(); 
         s.setVisible(true);
         this.dispose();
         s.show();
