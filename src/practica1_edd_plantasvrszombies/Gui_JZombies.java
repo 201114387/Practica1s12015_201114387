@@ -12,13 +12,14 @@ import javax.swing.JOptionPane;
  * @author ROBIN
  */
 public class Gui_JZombies extends javax.swing.JFrame {
-    Lista_Jugadores l = Gui_JPlantas.lista;
+    Lista_Jugadores listaJZ = Gui_JPlantas.lista;
     /**
      * Creates new form Gui_JZombies
      */
     public Gui_JZombies() {
         initComponents();
-        l.InsertAtBack("Jugador Zombie"); 
+        listaJZ.InsertAtBack("Jugador Zombie"); 
+        listaJZ.Buscar("Jugador Zombie", listaJZ.FirstNode);
     }
 
     /**
@@ -111,13 +112,13 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_ACampos_JZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JZombiesActionPerformed
         // TODO add your handling code here:
-        String extraJZ = JOptionPane.showInputDialog(this, "Ingrese Campo Extra");
+        listaJZ.aux.sub.InsertArBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
     }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
-        l.Buscar("Jugador Zombie", l.FirstNode);
-        System.out.println(l.aux.Data);
+        listaJZ.aux.sub.InsertAtFront(jTextField_Cantidad_JZombies.getText());
+        listaJZ.aux.sub.InsertAtFront(jTextField_Nombre_JZombies.getText()); 
         
         Gui_Plantas p = new Gui_Plantas();
         p.setVisible(true);

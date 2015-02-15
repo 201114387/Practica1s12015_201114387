@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Gui_JPlantas extends javax.swing.JFrame {
     static Lista_Jugadores lista = new Lista_Jugadores();
+    String ExtraJP;
     /**
      * Creates new form Gui_JPlantas
      */
@@ -20,6 +21,7 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         initComponents();
         lista.InsertAtBack("Lista Jugadores");
         lista.InsertAtBack("Jugador Planta");
+        lista.Buscar("Jugador Planta", lista.FirstNode);
     }
 
     /**
@@ -112,17 +114,16 @@ public class Gui_JPlantas extends javax.swing.JFrame {
 
     private void Btn_ACampos_JPlantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantas_ActionPerformed
         // TODO add your handling code here:
-        String extraJP = JOptionPane.showInputDialog(this,"Ingrese un campo extra");
+        lista.aux.sub.InsertArBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra"));
     }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
 
     private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
         // TODO add your handling code here:
-        lista.Buscar("Jugador Planta", lista.FirstNode);
-        System.out.println(lista.aux.Data);
-        lista.aux.sub.InsertArBack(jTextField_Nombre_JPlantas.getText());
-        lista.aux.sub.InsertArBack(jTextField_Cantidad_JPlantas.getText());
+        lista.aux.sub.InsertAtFront(jTextField_Cantidad_JPlantas.getText());
+        lista.aux.sub.InsertAtFront(jTextField_Nombre_JPlantas.getText());
         
-        Gui_Selección s = new Gui_Selección(); 
+        
+        Gui_Selección s = new Gui_Selección();  
         s.setVisible(true);
         this.dispose();
         s.show();

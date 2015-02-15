@@ -19,6 +19,11 @@ public class Sub_Lista_Jugador {
             Name = dato;
             next = null;
         }
+        
+        public Nodo_jugador(String dato, Nodo_jugador n){
+            Name = dato;
+            next = n;
+        }
 
         public String getName() {
             return Name;
@@ -56,6 +61,14 @@ public class Sub_Lista_Jugador {
             FirsNod = LastNod = new Nodo_jugador(dato);
         }else{
             LastNod = LastNod.next = new Nodo_jugador(dato);
+        }
+    }
+    
+    public void InsertAtFront(String dato){
+        if(FirsNod == null){
+            FirsNod = LastNod = new Nodo_jugador(dato);
+        }else{
+            FirsNod = new Nodo_jugador(dato, FirsNod);
         }
     }
     
