@@ -15,13 +15,11 @@ public class Lista_Jugadores {
         
         String Data;
         Nodo next;
-//        Sub_Lista_Jugador sub;
         Lista_Jugadores sub1;
         
         public Nodo(String nombre){
             Data = nombre;
             next = null;
-//            sub = new Sub_Lista_Jugador();
             sub1 = new Lista_Jugadores();
         }
         

@@ -5,12 +5,23 @@
  */
 package practica1_edd_plantasvrszombies;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ROBIN
  */
 public class Gui_Plantas extends javax.swing.JFrame {
-
+    int x = 0;
     /**
      * Creates new form Gui_Plantas
      */
@@ -45,7 +56,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
 
         jLabel4.setText("Cantidad Defensa");
 
-        jLabel5.setText("Ataque");
+        jLabel5.setText("Tipo de Ataque");
 
         Btn_Agregar_Plantas.setText("Agregar");
         Btn_Agregar_Plantas.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +87,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(70, 70, 70)
                 .addComponent(jLabel5)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Btn_Agregar_Plantas)
@@ -106,6 +117,39 @@ public class Gui_Plantas extends javax.swing.JFrame {
 
     private void Btn_Agregar_PlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Agregar_PlantasActionPerformed
         // TODO add your handling code here:
+        JLabel foto = new JLabel();
+//        JLabel l = new JLabel("Hola");
+//        JPanel p = new JPanel(); 
+//        p.setSize(200 ,200); 
+        
+        JFileChooser filechooser = new JFileChooser();
+        filechooser.setDialogTitle("Abrir Archivo...");
+        File file1 = new File("C:\\Users\\ROBIN\\Google Drive\\2015\\1er Semestre\\EDD\\Laboratorio\\Practica 1\\Imagenes\\Plantas");
+        filechooser.setCurrentDirectory(file1); 
+        int result = filechooser.showOpenDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+            try {
+                File file = filechooser.getSelectedFile();
+                JOptionPane.showMessageDialog(null, file);
+                ImageIcon icon = new ImageIcon(file.toString());
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
+                foto.setIcon(icono);
+                foto.setVisible(true); 
+                this.add(foto);
+                this.repaint();
+            } catch (Exception e) {
+            }
+            
+        }
+        
+//        p.setLocation(x, 0);
+//        p.setBackground(Color.red);
+//        p.setVisible(true);
+//        p.add(l);
+//        this.add(p,BorderLayout.CENTER);
+//        this.pack();
+        
+        x = x + 210;
     }//GEN-LAST:event_Btn_Agregar_PlantasActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
