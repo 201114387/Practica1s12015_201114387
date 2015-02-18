@@ -5,6 +5,8 @@
  */
 package practica1_edd_plantasvrszombies;
 
+import java.io.File;
+
 /**
  *
  * @author ROBIN
@@ -12,6 +14,7 @@ package practica1_edd_plantasvrszombies;
 public class Lista_Plantas_Zombies {
     
     class Nodo_PZ{
+        String Archivo;
         String Name;
         int Cantidad_Ataque;
         int Cantidad_Defensa;
@@ -19,7 +22,8 @@ public class Lista_Plantas_Zombies {
         
         Nodo_PZ next;
         
-        public Nodo_PZ(String dato,int CA, int CD, String TA){
+        public Nodo_PZ(String file,String dato,int CA, int CD, String TA){
+            Archivo = file;
             Name = dato;
             Cantidad_Ataque = CA;
             Cantidad_Defensa = CD;
@@ -27,7 +31,8 @@ public class Lista_Plantas_Zombies {
             next = null;
         }
         
-        public Nodo_PZ(String dato, int CA, int CD, String TA, Nodo_PZ n){
+        public Nodo_PZ(String file, String dato, int CA, int CD, String TA, Nodo_PZ n){
+            Archivo = file;
             Name = dato;
             Cantidad_Ataque = CA;
             Cantidad_Defensa = CD;
@@ -90,20 +95,20 @@ public class Lista_Plantas_Zombies {
         auxiliar = null;
     }
     
-    public void InsertAtBack(String dato,int CA, int CD, String TA)
+    public void InsertAtBack(String file, String dato,int CA, int CD, String TA)
     {
         if(FirsNod == null){
-            FirsNod = LastNod = new Nodo_PZ(dato, CA, CD, TA);
+            FirsNod = LastNod = new Nodo_PZ(file, dato, CA, CD, TA);
         }else{
-            LastNod = LastNod.next = new Nodo_PZ(dato, CA, CD, TA);
+            LastNod = LastNod.next = new Nodo_PZ(file, dato, CA, CD, TA);
         }
     }
     
-    public void InsertAtFront(String dato, int CA, int CD, String TA){
+    public void InsertAtFront(String file, String dato, int CA, int CD, String TA){
         if(FirsNod == null){
-            FirsNod = LastNod = new Nodo_PZ(dato, CA, CD, TA);
+            FirsNod = LastNod = new Nodo_PZ(file, dato, CA, CD, TA);
         }else{
-            FirsNod = new Nodo_PZ(dato, CA, CD, TA, FirsNod);
+            FirsNod = new Nodo_PZ(file, dato, CA, CD, TA, FirsNod);
         }
     }
     

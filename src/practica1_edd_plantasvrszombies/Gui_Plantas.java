@@ -15,13 +15,15 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 
 /**
  *
  * @author ROBIN
  */
 public class Gui_Plantas extends javax.swing.JFrame {
-    int x = 0;
+    int y = 0;
+    Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Plantas
      */
@@ -76,24 +78,24 @@ public class Gui_Plantas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addGap(113, 113, 113)
-                .addComponent(jLabel2)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel3)
-                .addGap(73, 73, 73)
-                .addComponent(jLabel4)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel5)
-                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Btn_Agregar_Plantas)
                 .addGap(9, 9, 9)
                 .addComponent(Btn_Aceptar)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addGap(94, 94, 94)
+                .addComponent(jLabel2)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel3)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel4)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel5)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +107,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_Agregar_Plantas)
                     .addComponent(Btn_Aceptar))
@@ -117,39 +119,65 @@ public class Gui_Plantas extends javax.swing.JFrame {
 
     private void Btn_Agregar_PlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Agregar_PlantasActionPerformed
         // TODO add your handling code here:
+        String path = "";
+        JPanel p = new JPanel(); 
+        p.setBounds(10, 50 + y, 670, 120);
+        p.setBackground(Color.red); 
         JLabel foto = new JLabel();
-//        JLabel l = new JLabel("Hola");
-//        JPanel p = new JPanel(); 
-//        p.setSize(200 ,200); 
+        foto.setBounds(10, 10, 100, 100);
+        JLabel nombre = new JLabel();
+        nombre.setBounds(170, 40, 60, 15);
+        JLabel CantAtaque = new JLabel();
+        CantAtaque.setBounds(310, 40, 30, 15); 
+        JLabel CantDef = new JLabel();
+        CantDef.setBounds(440, 40, 30, 15);
+        JLabel TipoAtaque = new JLabel();
+        TipoAtaque.setBounds(570, 40, 60, 15);
+        
         
         JFileChooser filechooser = new JFileChooser();
         filechooser.setDialogTitle("Abrir Archivo...");
-        File file1 = new File("C:\\Users\\ROBIN\\Google Drive\\2015\\1er Semestre\\EDD\\Laboratorio\\Practica 1\\Imagenes\\Plantas");
+        File file1 = new File("C:/Users/ROBIN/Google Drive/2015/1er Semestre/EDD/Laboratorio/Practica 1/Imagenes/Plantas");
         filechooser.setCurrentDirectory(file1); 
         int result = filechooser.showOpenDialog(null);
         if(result == JFileChooser.APPROVE_OPTION){
             try {
                 File file = filechooser.getSelectedFile();
-                JOptionPane.showMessageDialog(null, file);
+                path = file.toString();
                 ImageIcon icon = new ImageIcon(file.toString());
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
                 foto.setIcon(icono);
-                foto.setVisible(true); 
-                this.add(foto);
-                this.repaint();
+                                
             } catch (Exception e) {
             }
-            
         }
         
-//        p.setLocation(x, 0);
-//        p.setBackground(Color.red);
-//        p.setVisible(true);
-//        p.add(l);
-//        this.add(p,BorderLayout.CENTER);
-//        this.pack();
+                foto.setVisible(true);
+                p.add(foto); 
+                p.setLayout(null); 
+                this.add(p, BorderLayout.EAST);
+                this.repaint();
+                this.pack();
+                
+                nombre.setText(JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta...").toString());
+                p.add(nombre);
+                this.repaint();
+                
+                CantAtaque.setText(JOptionPane.showInputDialog(this,"Ingrese la cantidad de ataque...").toString());
+                p.add(CantAtaque);
+                this.repaint();
+                
+                CantDef.setText(JOptionPane.showInputDialog(this, "Ingrese la Cantidad de Defensa..").toString());
+                p.add(CantDef);
+                this.repaint();
+                
+                TipoAtaque.setText(JOptionPane.showInputDialog(this, "Ingrese el tipo de ataque (Directo o Disparo)..")); 
+                p.add(TipoAtaque);
+                this.repaint();
+                        
+        listaPV.InsertAtBack(path, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
         
-        x = x + 210;
+        y = y + 130;
     }//GEN-LAST:event_Btn_Agregar_PlantasActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
