@@ -14,17 +14,18 @@ public class Lista_Jugadores {
     class Nodo{
         
         String Data;
+        int Cantidad;
         Nodo next;
-        Lista_Jugadores sub1;
         
-        public Nodo(String nombre){
+        public Nodo(String nombre,int cant){
             Data = nombre;
+            Cantidad = cant;
             next = null;
-            sub1 = new Lista_Jugadores();
         }
         
-        public Nodo(String dato, Nodo n){
+        public Nodo(String dato, int cant, Nodo n){
             Data = dato;
+            Cantidad = cant;
             next = n;
         }
         
@@ -56,22 +57,22 @@ public class Lista_Jugadores {
         aux = null;
     }
     
-    public void InsertAtBack(String Name)
+    public void InsertAtBack(String Name, int Cantidad)
     {
         if(FirstNode == null)
         {
-            FirstNode = LastNodo = new Nodo(Name);
+            FirstNode = LastNodo = new Nodo(Name, Cantidad); 
         }
         else{
-            LastNodo = LastNodo.next = new Nodo(Name);
+            LastNodo = LastNodo.next = new Nodo(Name, Cantidad);
         }
     }
     
-    public void InsertAtFront(String dato){
+    public void InsertAtFront(String dato, int Cantidad){
         if(FirstNode == null){
-            FirstNode = LastNodo = new Nodo(dato);
+            FirstNode = LastNodo = new Nodo(dato, Cantidad);
         }else{
-            FirstNode = new Nodo(dato, FirstNode);
+            FirstNode = new Nodo(dato, Cantidad, FirstNode);
         }
     }
     

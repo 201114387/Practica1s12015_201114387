@@ -16,6 +16,7 @@ public class Gui_Zombies extends javax.swing.JFrame {
      */
     public Gui_Zombies() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

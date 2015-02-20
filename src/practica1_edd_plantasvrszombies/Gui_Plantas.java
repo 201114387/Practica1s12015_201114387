@@ -29,6 +29,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
      */
     public Gui_Plantas() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

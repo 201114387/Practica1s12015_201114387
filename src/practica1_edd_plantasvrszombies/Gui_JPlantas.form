@@ -97,8 +97,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField_Nombre_JPlantas">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_Nombre_JPlantasKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField_Cantidad_JPlantas">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_Cantidad_JPlantasKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Btn_ACampos_JPlantas_">
       <Properties>

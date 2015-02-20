@@ -19,9 +19,7 @@ public class Gui_JPlantas extends javax.swing.JFrame {
      */
     public Gui_JPlantas() {
         initComponents();
-        lista.InsertAtBack("Lista Jugadores");
-        lista.InsertAtBack("Jugador Planta");
-        lista.Buscar("Jugador Planta", lista.FirstNode);
+        this.setLocationRelativeTo(null); 
     }
 
     /**
@@ -48,6 +46,18 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Cantidad:");
+
+        jTextField_Nombre_JPlantas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_Nombre_JPlantasKeyTyped(evt);
+            }
+        });
+
+        jTextField_Cantidad_JPlantas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_Cantidad_JPlantasKeyTyped(evt);
+            }
+        });
 
         Btn_ACampos_JPlantas_.setText("Agregar Mas Campos");
         Btn_ACampos_JPlantas_.addActionListener(new java.awt.event.ActionListener() {
@@ -115,13 +125,14 @@ public class Gui_JPlantas extends javax.swing.JFrame {
     private void Btn_ACampos_JPlantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantas_ActionPerformed
         // TODO add your handling code here:
         //lista.aux.sub.InsertArBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra"));
-        lista.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra")); 
+//        lista.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this,"Ingrese un campo extra")); 
     }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
 
     private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
         // TODO add your handling code here:
-        lista.aux.sub1.InsertAtFront(jTextField_Cantidad_JPlantas.getText());
-        lista.aux.sub1.InsertAtFront(jTextField_Nombre_JPlantas.getText());
+        lista.InsertAtBack("Lista Jugadores", 0);
+        lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
+        lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
         
         
         Gui_Selección s = new Gui_Selección();
@@ -129,6 +140,18 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         this.dispose();
         s.show();
     }//GEN-LAST:event_Btn_Aceptar_ActionPerformed
+
+    private void jTextField_Nombre_JPlantasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Nombre_JPlantasKeyTyped
+        // TODO add your handling code here:
+        int c = evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_jTextField_Nombre_JPlantasKeyTyped
+
+    private void jTextField_Cantidad_JPlantasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Cantidad_JPlantasKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(c<'0'|| c>'9') evt.consume();
+    }//GEN-LAST:event_jTextField_Cantidad_JPlantasKeyTyped
 
     /**
      * @param args the command line arguments

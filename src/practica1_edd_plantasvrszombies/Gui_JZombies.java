@@ -18,8 +18,7 @@ public class Gui_JZombies extends javax.swing.JFrame {
      */
     public Gui_JZombies() {
         initComponents();
-        listaJZ.InsertAtBack("Jugador Zombie"); 
-        listaJZ.Buscar("Jugador Zombie", listaJZ.FirstNode);
+        this.setLocationRelativeTo(null); 
     }
 
     /**
@@ -112,13 +111,14 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_ACampos_JZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JZombiesActionPerformed
         // TODO add your handling code here:
-        listaJZ.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
+//        listaJZ.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
     }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
-        listaJZ.aux.sub1.InsertAtFront(jTextField_Cantidad_JZombies.getText());
-        listaJZ.aux.sub1.InsertAtFront(jTextField_Nombre_JZombies.getText()); 
+        listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText()));  
+        listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+        
         
         Gui_Plantas p = new Gui_Plantas();
         p.setVisible(true);

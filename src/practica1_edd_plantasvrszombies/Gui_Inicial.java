@@ -16,6 +16,7 @@ public class Gui_Inicial extends javax.swing.JFrame {
      */
     public Gui_Inicial() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

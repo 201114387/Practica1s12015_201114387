@@ -10,12 +10,13 @@ package practica1_edd_plantasvrszombies;
  * @author ROBIN
  */
 public class Gui_Selección extends javax.swing.JFrame {
-
+    Lista_Jugadores LJ = new Lista_Jugadores();
     /**
      * Creates new form Gui_Selección
      */
     public Gui_Selección() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -130,7 +131,6 @@ public class Gui_Selección extends javax.swing.JFrame {
         JP.setVisible(true);
         this.dispose();
         JP.show();
-        Btn_Jugador_Zombie_.setVisible(true); 
     }//GEN-LAST:event_Btn_Jugador_Plantas_ActionPerformed
 
     private void Btn_Jugador_Zombie_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Jugador_Zombie_ActionPerformed
