@@ -131,14 +131,26 @@ public class Gui_JPlantas extends javax.swing.JFrame {
     private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
         // TODO add your handling code here:
         lista.InsertAtBack("Lista Jugadores", 0);
-        lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
-        lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
+        if(jTextField_Nombre_JPlantas.getText().isEmpty() && jTextField_Cantidad_JPlantas.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+        }
+        else if(jTextField_Nombre_JPlantas.getText().isEmpty() || jTextField_Cantidad_JPlantas.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+        }
+        else
+        {
+            lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
+            lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
+
+
+            Gui_Selección s = new Gui_Selección();
+            s.setVisible(true);
+            this.dispose();
+            s.show();
+        }
         
-        
-        Gui_Selección s = new Gui_Selección();
-        s.setVisible(true);
-        this.dispose();
-        s.show();
     }//GEN-LAST:event_Btn_Aceptar_ActionPerformed
 
     private void jTextField_Nombre_JPlantasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Nombre_JPlantasKeyTyped

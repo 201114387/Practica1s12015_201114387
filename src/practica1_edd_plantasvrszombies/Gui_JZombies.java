@@ -47,6 +47,18 @@ public class Gui_JZombies extends javax.swing.JFrame {
             }
         });
 
+        jTextField_Nombre_JZombies.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_Nombre_JZombiesKeyTyped(evt);
+            }
+        });
+
+        jTextField_Cantidad_JZombies.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_Cantidad_JZombiesKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Cantidad:");
@@ -116,15 +128,37 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
-        listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText()));  
-        listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+        if(jTextField_Nombre_JZombies.getText().isEmpty() && jTextField_Cantidad_JZombies.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+        }
+        else if(jTextField_Nombre_JZombies.getText().isEmpty() || jTextField_Cantidad_JZombies.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+        }
+        else
+        {
+            listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText()));  
+            listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+
+
+            Gui_Plantas p = new Gui_Plantas();
+            p.setVisible(true);
+            this.dispose();
+            p.show();
+        }
         
-        
-        Gui_Plantas p = new Gui_Plantas();
-        p.setVisible(true);
-        this.dispose();
-        p.show();
     }//GEN-LAST:event_Btn_AceptarActionPerformed
+
+    private void jTextField_Nombre_JZombiesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Nombre_JZombiesKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_jTextField_Nombre_JZombiesKeyTyped
+
+    private void jTextField_Cantidad_JZombiesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_Cantidad_JZombiesKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_jTextField_Cantidad_JZombiesKeyTyped
 
     /**
      * @param args the command line arguments
