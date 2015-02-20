@@ -16,11 +16,13 @@ public class Lista_Jugadores {
         String Data;
         int Cantidad;
         Nodo next;
+        Lista_Campos LC;
         
         public Nodo(String nombre,int cant){
             Data = nombre;
             Cantidad = cant;
             next = null;
+            LC = new Lista_Campos();
         }
         
         public Nodo(String dato, int cant, Nodo n){
@@ -78,7 +80,7 @@ public class Lista_Jugadores {
     
     public void Buscar(String Name, Nodo n){
         while(n != null){
-            if(n.Data == Name){
+            if(n.Data.equals(Name)){
                 aux = n;
             }
             n = n.next;

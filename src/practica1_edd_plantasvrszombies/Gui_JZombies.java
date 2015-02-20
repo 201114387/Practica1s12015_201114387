@@ -129,10 +129,10 @@ public class Gui_JZombies extends javax.swing.JFrame {
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
         if(jTextField_Nombre_JZombies.getText().isEmpty() && jTextField_Cantidad_JZombies.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
         }
         else if(jTextField_Nombre_JZombies.getText().isEmpty() || jTextField_Cantidad_JZombies.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Llene todos los campos....");
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
         }
         else
         {
@@ -140,10 +140,10 @@ public class Gui_JZombies extends javax.swing.JFrame {
             listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
 
 
-            Gui_Plantas p = new Gui_Plantas();
-            p.setVisible(true);
-            this.dispose();
-            p.show();
+//            Gui_Plantas p = new Gui_Plantas();
+//            p.setVisible(true);
+//            this.dispose();
+//            p.show();
         }
         
     }//GEN-LAST:event_Btn_AceptarActionPerformed
