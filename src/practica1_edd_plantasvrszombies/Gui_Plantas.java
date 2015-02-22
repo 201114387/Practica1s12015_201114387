@@ -7,6 +7,7 @@ package practica1_edd_plantasvrszombies;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -23,6 +25,7 @@ import javax.swing.JScrollBar;
  */
 public class Gui_Plantas extends javax.swing.JFrame {
     int y = 0;
+    int index = 0;
     Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Plantas
@@ -48,6 +51,8 @@ public class Gui_Plantas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Btn_Agregar_Plantas = new javax.swing.JButton();
         Btn_Aceptar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_Catalogo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,28 +80,38 @@ public class Gui_Plantas extends javax.swing.JFrame {
             }
         });
 
+        jTextArea_Catalogo.setEditable(false);
+        jTextArea_Catalogo.setColumns(20);
+        jTextArea_Catalogo.setRows(5);
+        jTextArea_Catalogo.setEnabled(false);
+        jTextArea_Catalogo.setOpaque(false);
+        jScrollPane1.setViewportView(jTextArea_Catalogo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Btn_Agregar_Plantas)
-                .addGap(9, 9, 9)
-                .addComponent(Btn_Aceptar)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addGap(94, 94, 94)
-                .addComponent(jLabel2)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel3)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel4)
-                .addGap(53, 53, 53)
-                .addComponent(jLabel5)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Btn_Agregar_Plantas)
+                        .addGap(9, 9, 9)
+                        .addComponent(Btn_Aceptar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1)
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel2)
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel3)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel4)
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel5)
+                        .addGap(0, 36, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +123,9 @@ public class Gui_Plantas extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_Agregar_Plantas)
                     .addComponent(Btn_Aceptar))
@@ -121,9 +138,10 @@ public class Gui_Plantas extends javax.swing.JFrame {
     private void Btn_Agregar_PlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Agregar_PlantasActionPerformed
         // TODO add your handling code here:
         String path = "";
+        
         JPanel p = new JPanel(); 
-        p.setBounds(10, 50 + y, 670, 120);
-        p.setBackground(Color.red); 
+        p.setBounds(10, 10 + y, 670, 120);
+        p.setBackground(Color.red);
         JLabel foto = new JLabel();
         foto.setBounds(10, 10, 100, 100);
         JLabel nombre = new JLabel();
@@ -149,17 +167,15 @@ public class Gui_Plantas extends javax.swing.JFrame {
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
                 foto.setIcon(icono);
                                 
-            } catch (Exception e) {
-            }
-        }
-        
+                
                 foto.setVisible(true);
                 p.add(foto); 
                 p.setLayout(null); 
-                this.add(p, BorderLayout.EAST);
+                jTextArea_Catalogo.add(p);
+                jTextArea_Catalogo.setRows(index);
                 this.repaint();
                 this.pack();
-                
+                JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta...","nombre..");
                 nombre.setText(JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta...").toString());
                 p.add(nombre);
                 this.repaint();
@@ -176,9 +192,16 @@ public class Gui_Plantas extends javax.swing.JFrame {
                 p.add(TipoAtaque);
                 this.repaint();
                         
-        listaPV.InsertAtBack(path, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+                listaPV.InsertAtBack(path, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+
+                y = y + 130;
+                index = index + 15;
+                
+            } catch (Exception e) {
+            }
+        }
         
-        y = y + 130;
+                
     }//GEN-LAST:event_Btn_Agregar_PlantasActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
@@ -232,5 +255,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea_Catalogo;
     // End of variables declaration//GEN-END:variables
 }

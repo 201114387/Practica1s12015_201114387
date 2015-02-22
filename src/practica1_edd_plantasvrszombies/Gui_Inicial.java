@@ -74,9 +74,12 @@ public class Gui_Inicial extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Gui_Selección s = new Gui_Selección();
-        s.setVisible(true);
-        s.show();
+//        Gui_Selección s = new Gui_Selección();
+//        s.setVisible(true);
+//        s.show();
+        Gui_Plantas p = new Gui_Plantas();
+        p.setVisible(true);
+        p.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

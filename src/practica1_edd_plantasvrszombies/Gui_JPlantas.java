@@ -124,19 +124,7 @@ public class Gui_JPlantas extends javax.swing.JFrame {
 
     private void Btn_ACampos_JPlantas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JPlantas_ActionPerformed
         // TODO add your handling code here:
-        String data = JOptionPane.showInputDialog(this,"Ingrese el campo extra...");
-        if(data.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Ingrese El campo solicitado....");
-        }
-        else{
-            lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
-            lista.aux.LC.InsertAtBack(data); 
-        } 
-    }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
-
-    private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
-        // TODO add your handling code here:
-        lista.InsertAtBack("Lista Jugadores", 0);
+        
         if(jTextField_Nombre_JPlantas.getText().isEmpty() && jTextField_Cantidad_JPlantas.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
@@ -147,14 +135,54 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         }
         else
         {
-            lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
+            String data = JOptionPane.showInputDialog(this,"Ingrese el campo extra...");
+            if(data.isEmpty()){
+            }
+            else{
+                lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
+                if(lista.aux != null) 
+                {
+                    lista.aux.LC.InsertAtBack(data);
+                }
+                else{
+                    lista.InsertAtBack("Lista Jugadores", 0);
+                    lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
+                    lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
+                    lista.aux.LC.InsertAtBack(data);
+                }
+            }
+        }
+         
+    }//GEN-LAST:event_Btn_ACampos_JPlantas_ActionPerformed
+
+    private void Btn_Aceptar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aceptar_ActionPerformed
+        // TODO add your handling code here:
+        if(jTextField_Nombre_JPlantas.getText().isEmpty() && jTextField_Cantidad_JPlantas.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
+        }
+        else if(jTextField_Nombre_JPlantas.getText().isEmpty() || jTextField_Cantidad_JPlantas.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
+        }
+        else
+        {
             lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
+            if(lista.aux != null){
+                Gui_Selección s = new Gui_Selección();
+                s.setVisible(true);
+                this.dispose();
+                s.show();
+            }else{
+                lista.InsertAtBack("Lista Jugadores", 0);
+                lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
 
-
-//            Gui_Selección s = new Gui_Selección();
-//            s.setVisible(true);
-//            this.dispose();
-//            s.show();
+                Gui_Selección s = new Gui_Selección();
+                s.setVisible(true);
+                this.dispose();
+                s.show();
+            }
+            
         }
         
     }//GEN-LAST:event_Btn_Aceptar_ActionPerformed

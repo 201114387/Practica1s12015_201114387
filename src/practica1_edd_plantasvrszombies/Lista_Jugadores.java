@@ -79,6 +79,7 @@ public class Lista_Jugadores {
     }
     
     public void Buscar(String Name, Nodo n){
+        aux = null;
         while(n != null){
             if(n.Data.equals(Name)){
                 aux = n;

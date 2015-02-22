@@ -123,28 +123,65 @@ public class Gui_JZombies extends javax.swing.JFrame {
 
     private void Btn_ACampos_JZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ACampos_JZombiesActionPerformed
         // TODO add your handling code here:
-//        listaJZ.aux.sub1.InsertAtBack(JOptionPane.showInputDialog(this, "Ingrese Campo Extra"));
-    }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
-
-    private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
-        // TODO add your handling code here:
-        if(jTextField_Nombre_JZombies.getText().isEmpty() && jTextField_Cantidad_JZombies.getText().isEmpty()){
+        if(jTextField_Nombre_JZombies.getText().isEmpty() && jTextField_Cantidad_JZombies.getText().isEmpty())
+        {
             JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
         }
-        else if(jTextField_Nombre_JZombies.getText().isEmpty() || jTextField_Cantidad_JZombies.getText().isEmpty()){
+        else if(jTextField_Nombre_JZombies.getText().isEmpty() || jTextField_Cantidad_JZombies.getText().isEmpty())
+        {
             JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
         }
         else
         {
-            listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText()));  
-            listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
-
-
-//            Gui_Plantas p = new Gui_Plantas();
-//            p.setVisible(true);
-//            this.dispose();
-//            p.show();
+            String data = JOptionPane.showInputDialog(this,"Ingrese el campo extra...");
+            if(data.isEmpty()){
+            }
+            else{
+                listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+                if(listaJZ.aux != null) 
+                {
+                    listaJZ.aux.LC.InsertAtBack(data);
+                }
+                else{
+                    listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText())); 
+                    listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+                    listaJZ.aux.LC.InsertAtBack(data);
+                }
+            }
         }
+    }//GEN-LAST:event_Btn_ACampos_JZombiesActionPerformed
+
+    private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
+        // TODO add your handling code here:
+        if(jTextField_Nombre_JZombies.getText().isEmpty() && jTextField_Cantidad_JZombies.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
+        }
+        else if(jTextField_Nombre_JZombies.getText().isEmpty() || jTextField_Cantidad_JZombies.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese el campo solicitado....");
+        }
+        else
+        {
+            listaJZ.Buscar(jTextField_Nombre_JZombies.getText(), listaJZ.FirstNode);
+            if(listaJZ.aux != null){
+                
+                Gui_Plantas p = new Gui_Plantas();
+                p.setVisible(true);
+                this.dispose();
+                p.show();
+                
+            }else{
+                listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText())); 
+
+                Gui_Plantas p = new Gui_Plantas();
+                p.setVisible(true);
+                this.dispose();
+                p.show();
+            }
+            
+        }
+        
         
     }//GEN-LAST:event_Btn_AceptarActionPerformed
 
