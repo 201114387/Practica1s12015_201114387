@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -26,6 +28,9 @@ import javax.swing.JScrollPane;
 public class Gui_Plantas extends javax.swing.JFrame {
     int y = 0;
     int index = 0;
+    String path = "";
+    String Name;
+    
     Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Plantas
@@ -94,24 +99,26 @@ public class Gui_Plantas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Btn_Agregar_Plantas)
                         .addGap(9, 9, 9)
                         .addComponent(Btn_Aceptar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel2)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel3)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel4)
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel5)
-                        .addGap(0, 36, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel1)
+                                .addGap(94, 94, 94)
+                                .addComponent(jLabel2)
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel3)
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel4)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel5))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 40, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +131,12 @@ public class Gui_Plantas extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_Agregar_Plantas)
                     .addComponent(Btn_Aceptar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,22 +144,6 @@ public class Gui_Plantas extends javax.swing.JFrame {
 
     private void Btn_Agregar_PlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Agregar_PlantasActionPerformed
         // TODO add your handling code here:
-        String path = "";
-        
-        JPanel p = new JPanel(); 
-        p.setBounds(10, 10 + y, 670, 120);
-        p.setBackground(Color.red);
-        JLabel foto = new JLabel();
-        foto.setBounds(10, 10, 100, 100);
-        JLabel nombre = new JLabel();
-        nombre.setBounds(170, 40, 60, 15);
-        JLabel CantAtaque = new JLabel();
-        CantAtaque.setBounds(310, 40, 30, 15); 
-        JLabel CantDef = new JLabel();
-        CantDef.setBounds(440, 40, 30, 15);
-        JLabel TipoAtaque = new JLabel();
-        TipoAtaque.setBounds(570, 40, 60, 15);
-        
         
         JFileChooser filechooser = new JFileChooser();
         filechooser.setDialogTitle("Abrir Archivo...");
@@ -162,43 +153,22 @@ public class Gui_Plantas extends javax.swing.JFrame {
         if(result == JFileChooser.APPROVE_OPTION){
             try {
                 File file = filechooser.getSelectedFile();
-                path = file.toString();
-                ImageIcon icon = new ImageIcon(file.toString());
-                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
-                foto.setIcon(icono);
-                                
-                
-                foto.setVisible(true);
-                p.add(foto); 
-                p.setLayout(null); 
-                jTextArea_Catalogo.add(p);
-                jTextArea_Catalogo.setRows(index);
-                this.repaint();
-                this.pack();
-                JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta...","nombre..");
-                nombre.setText(JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta...").toString());
-                p.add(nombre);
-                this.repaint();
-                
-                CantAtaque.setText(JOptionPane.showInputDialog(this,"Ingrese la cantidad de ataque...").toString());
-                p.add(CantAtaque);
-                this.repaint();
-                
-                CantDef.setText(JOptionPane.showInputDialog(this, "Ingrese la Cantidad de Defensa..").toString());
-                p.add(CantDef);
-                this.repaint();
-                
-                TipoAtaque.setText(JOptionPane.showInputDialog(this, "Ingrese el tipo de ataque (Directo o Disparo)..")); 
-                p.add(TipoAtaque);
-                this.repaint();
-                        
-                listaPV.InsertAtBack(path, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
-
-                y = y + 130;
-                index = index + 15;
+                Panel_Personajes(file.toString()); 
                 
             } catch (Exception e) {
             }
+        }
+        
+        try {
+//                                    JL_Editar.addMouseListener(new MouseAdapter(){
+//                                        public void mouseClicked(MouseEvent e){
+//                                            JOptionPane.showMessageDialog(null, "hello word");
+//                                        }
+//                                    });
+
+
+        } catch (Exception j) {
+            JOptionPane.showMessageDialog(null, "No todos los campos fueron ingresados");
         }
         
                 
@@ -212,6 +182,69 @@ public class Gui_Plantas extends javax.swing.JFrame {
         z.show();
     }//GEN-LAST:event_Btn_AceptarActionPerformed
 
+    public void Panel_Personajes(String direccion){
+        JPanel Panel = new JPanel();
+        Panel.setBounds(10, 10 + y, 700, 120);
+        Panel.setBackground(Color.red);
+        
+        JLabel foto = new JLabel();
+        foto.setBounds(10, 10, 100, 100);
+        foto.setVisible(true);
+        
+        JLabel nombre = new JLabel();
+        nombre.setBounds(170, 40, 60, 15);
+        
+        JLabel CantAtaque = new JLabel();
+        CantAtaque.setBounds(310, 40, 30, 15);
+        
+        JLabel CantDef = new JLabel();
+        CantDef.setBounds(440, 40, 30, 15);
+        
+        JLabel TipoAtaque = new JLabel();
+        TipoAtaque.setBounds(570, 40, 60, 15);
+        
+        JLabel JL_Editar = new JLabel("Editar");
+        JL_Editar.setBounds(620, 40, 60, 15);
+        
+        
+            ImageIcon icon = new ImageIcon(direccion);
+            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
+            foto.setIcon(icono);
+                                
+            Panel.add(foto); 
+            Panel.setLayout(null); 
+            jTextArea_Catalogo.add(Panel);
+            jTextArea_Catalogo.setRows(index);
+            this.repaint();
+            this.pack();
+            
+                nombre.setText(JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta..."));
+                Panel.add(nombre);
+                this.repaint();
+            
+                CantAtaque.setText(JOptionPane.showInputDialog(this,"Ingrese la cantidad de ataque..."));
+                Panel.add(CantAtaque);
+                this.repaint();
+                
+                CantDef.setText(JOptionPane.showInputDialog(this, "Ingrese la Cantidad de Defensa.."));
+                Panel.add(CantDef);
+                this.repaint();
+                
+                TipoAtaque.setText(JOptionPane.showInputDialog(this, "Ingrese el tipo de ataque (Directo o Disparo)..")); 
+                Panel.add(TipoAtaque);
+                this.repaint();
+                
+                Panel.add(JL_Editar);
+                
+                listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+            
+            y = y + 130;
+            index = index + 15;
+        
+        
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
