@@ -141,6 +141,9 @@ public class Gui_Selección extends javax.swing.JFrame {
 
     private void Btn_Comenzar_Juego_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Comenzar_Juego_ActionPerformed
         // TODO add your handling code here:
+        Gui_Juego J = new Gui_Juego();
+        J.setVisible(true);
+        J.show();
     }//GEN-LAST:event_Btn_Comenzar_Juego_ActionPerformed
 
     private void Btn_Eliminar_Datos_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Eliminar_Datos_ActionPerformed
