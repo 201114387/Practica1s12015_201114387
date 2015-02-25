@@ -10,7 +10,9 @@ package practica1_edd_plantasvrszombies;
  * @author ROBIN
  */
 public class Gui_Juego extends javax.swing.JFrame {
-
+    Lista_Jugadores JPZ;
+    Lista_Plantas_Zombies Plantas = new Lista_Plantas_Zombies();
+    Lista_Plantas_Zombies Zombies = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Juego
      */
@@ -102,6 +104,12 @@ public class Gui_Juego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void Listas(Lista_Jugadores juga, Lista_Plantas_Zombies plan, Lista_Plantas_Zombies zomb){
+        JPZ = juga;
+        Plantas = plan;
+        Zombies = zomb;
+    };
     /**
      * @param args the command line arguments
      */

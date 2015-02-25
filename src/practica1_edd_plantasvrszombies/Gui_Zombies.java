@@ -6,6 +6,7 @@
 package practica1_edd_plantasvrszombies;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,7 +27,7 @@ public class Gui_Zombies extends javax.swing.JFrame {
     int y = 0;
     int index = 0;
     int bandera = 0;
-    Lista_Plantas_Zombies listaZ = new Lista_Plantas_Zombies();
+    public Lista_Plantas_Zombies listaZ = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Zombies
      */
@@ -35,6 +36,8 @@ public class Gui_Zombies extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Catalogo Zombies");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,7 +158,9 @@ public class Gui_Zombies extends javax.swing.JFrame {
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
+        
         Gui_Selección s = new Gui_Selección();
+        s.Recibir_Zombies(listaZ); 
         s.setVisible(true);
         this.dispose();
         s.show();

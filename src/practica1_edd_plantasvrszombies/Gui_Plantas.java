@@ -26,7 +26,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
     int y = 0;
     int index = 0;
     int bandera = 0;
-    Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
+    public Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Plantas
      */
@@ -159,6 +159,8 @@ public class Gui_Plantas extends javax.swing.JFrame {
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
         // TODO add your handling code here:
         Gui_Zombies z = new Gui_Zombies();
+        Gui_Selección s = new Gui_Selección();
+        s.recibir_Plantas(listaPV); 
         z.setVisible(true);
         this.dispose();
         z.show();

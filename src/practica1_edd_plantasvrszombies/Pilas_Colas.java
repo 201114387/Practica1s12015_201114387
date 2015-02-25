@@ -51,11 +51,19 @@ public class Pilas_Colas {
         AuxCola = null;
     }
     
-    public void Push_PC(String path, int CA, int CD, int TA){
+    public void Push_Pila(String path, int CA, int CD, int TA){
         if(Cabeza == null){
             Cabeza = Fin =  new Nodo_PC(path, CA, CD, TA);
         }else{
             Fin = new Nodo_PC(path, CA, CD, TA, Fin,null);
+        }
+    }
+    
+    public void Push_Cola(String path, int CA, int CD, int TA){
+        if(Cabeza == null){
+            Cabeza = Fin = new Nodo_PC(path, CA, CD, TA);
+        }else{
+            Fin = new Nodo_PC(path, CA, CD, TA, null, Fin);
         }
     }
     
@@ -74,7 +82,7 @@ public class Pilas_Colas {
             return null;
         }else{
             AuxCola = Cabeza;
-            Cabeza = Cabeza.anterior;
+            Cabeza = Cabeza.next;
             return AuxCola;
         }
     }

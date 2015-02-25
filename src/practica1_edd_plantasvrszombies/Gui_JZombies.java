@@ -167,6 +167,8 @@ public class Gui_JZombies extends javax.swing.JFrame {
             if(listaJZ.aux != null){
                 
                 Gui_Plantas p = new Gui_Plantas();
+                Gui_Selección s = new Gui_Selección();
+                s.Recibir_Jugadores(listaJZ);
                 p.setVisible(true);
                 this.dispose();
                 p.show();
@@ -175,6 +177,8 @@ public class Gui_JZombies extends javax.swing.JFrame {
                 listaJZ.InsertAtBack(jTextField_Nombre_JZombies.getText(), Integer.valueOf(jTextField_Cantidad_JZombies.getText())); 
 
                 Gui_Plantas p = new Gui_Plantas();
+                Gui_Selección s = new Gui_Selección();
+                s.Recibir_Jugadores(listaJZ); 
                 p.setVisible(true);
                 this.dispose();
                 p.show();
