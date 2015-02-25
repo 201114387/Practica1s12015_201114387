@@ -112,6 +112,14 @@ public class Lista_Plantas_Zombies {
         }
     }
     
-    
+    public void Buscar(String data, Nodo_PZ n){
+        auxiliar = null;
+        while(n != null){
+            if(n.Name.equals(data)){
+                auxiliar = n; 
+            }
+            n = n.next;
+        }
+    }
     
 }

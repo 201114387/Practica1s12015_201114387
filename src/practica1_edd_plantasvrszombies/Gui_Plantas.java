@@ -5,13 +5,10 @@
  */
 package practica1_edd_plantasvrszombies;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -19,8 +16,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
@@ -30,9 +25,7 @@ import javax.swing.JTextField;
 public class Gui_Plantas extends javax.swing.JFrame {
     int y = 0;
     int index = 0;
-    String path = "";
-    String Name;
-    
+    int bandera = 0;
     Lista_Plantas_Zombies listaPV = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Plantas
@@ -230,6 +223,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
                 Panel.add(JL_Eliminar);
                     Panel.repaint();
        
+                    //----------------------- Listener Para Guardar --------------------------
                 JL_Guardar.addMouseListener(new MouseAdapter(){
                     @Override
                     public void mouseClicked(MouseEvent e){
@@ -249,22 +243,37 @@ public class Gui_Plantas extends javax.swing.JFrame {
                     }
                 });
                 
+                    //----------------------- Listener para Editar --------------------------------
                 JL_Editar.addMouseListener(new MouseAdapter(){
                     @Override
                     public void mouseClicked(MouseEvent e){
-                            nombre.setEditable(true); 
-                            CantAtaque.setEditable(true);
-                            CantDef.setEditable(true);
-                            TipoAtaque.setEditable(true);
-                        if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
-                        }else{
-                            listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
-                            nombre.setEditable(false); 
-                            CantAtaque.setEditable(false);
-                            CantDef.setEditable(false);
-                            TipoAtaque.setEditable(false); 
-                        }
+                            
+                            if(bandera == 0){
+                                 
+                                listaPV.Buscar(nombre.getText(), listaPV.FirsNod);
+                                JOptionPane.showMessageDialog(null, nombre.getText());
+                                nombre.setEditable(true); 
+                                CantAtaque.setEditable(true);
+                                CantDef.setEditable(true);
+                                TipoAtaque.setEditable(true);
+                                bandera = 1;
+                            }else{
+                                if(listaPV.auxiliar != null){
+                                    if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
+                                        JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
+                                    }else{
+                                        listaPV.auxiliar.Name = nombre.getText();
+                                        listaPV.auxiliar.Cantidad_Ataque = Integer.valueOf(CantAtaque.getText());
+                                        listaPV.auxiliar.Cantidad_Defensa = Integer.parseInt(CantDef.getText());
+                                        listaPV.auxiliar.Tipo_Ataque = TipoAtaque.getText();
+                                        nombre.setEditable(false); 
+                                        CantAtaque.setEditable(false);
+                                        CantDef.setEditable(false);
+                                        TipoAtaque.setEditable(false); 
+                                    }
+                                }
+                                bandera = 0;
+                            }
                     }
                 });
                 
@@ -272,19 +281,9 @@ public class Gui_Plantas extends javax.swing.JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e){
                         
-//                        if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
-//                            JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
-//                        }else{
-//                            listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
-//                            nombre.setEditable(false); 
-//                            CantAtaque.setEditable(false);
-//                            CantDef.setEditable(false);
-//                            TipoAtaque.setEditable(false); 
-//                        }
                     }
                 });
                     
-            
             y = y + 130;
             index = index + 15;
         
