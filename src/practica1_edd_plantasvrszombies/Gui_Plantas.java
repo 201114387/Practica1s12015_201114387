@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -116,8 +118,8 @@ public class Gui_Plantas extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(53, 53, 53)
                                 .addComponent(jLabel5))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 40, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 58, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -157,21 +159,7 @@ public class Gui_Plantas extends javax.swing.JFrame {
                 
             } catch (Exception e) {
             }
-        }
-        
-        try {
-//                                    JL_Editar.addMouseListener(new MouseAdapter(){
-//                                        public void mouseClicked(MouseEvent e){
-//                                            JOptionPane.showMessageDialog(null, "hello word");
-//                                        }
-//                                    });
-
-
-        } catch (Exception j) {
-            JOptionPane.showMessageDialog(null, "No todos los campos fueron ingresados");
-        }
-        
-                
+        }        
     }//GEN-LAST:event_Btn_Agregar_PlantasActionPerformed
 
     private void Btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AceptarActionPerformed
@@ -182,66 +170,123 @@ public class Gui_Plantas extends javax.swing.JFrame {
         z.show();
     }//GEN-LAST:event_Btn_AceptarActionPerformed
 
-    public void Panel_Personajes(String direccion){
-        JPanel Panel = new JPanel();
-        Panel.setBounds(10, 10 + y, 700, 120);
-        Panel.setBackground(Color.red);
+    public void Panel_Personajes(final String direccion){
+        
+        final JPanel Panel = new JPanel();
+        Panel.setBounds(10, 10 + y, 820, 120);
+        Panel.setBackground(Color.red); 
         
         JLabel foto = new JLabel();
         foto.setBounds(10, 10, 100, 100);
         foto.setVisible(true);
         
-        JLabel nombre = new JLabel();
-        nombre.setBounds(170, 40, 60, 15);
+        final JTextField nombre = new JTextField();
+        nombre.setBounds(150, 40, 80, 30);
         
-        JLabel CantAtaque = new JLabel();
-        CantAtaque.setBounds(310, 40, 30, 15);
+        final JTextField CantAtaque = new JTextField();
+        CantAtaque.setBounds(300, 40, 40, 30);
         
-        JLabel CantDef = new JLabel();
-        CantDef.setBounds(440, 40, 30, 15);
+        final JTextField CantDef = new JTextField();
+        CantDef.setBounds(420, 40, 40, 30);
+                
+        final JTextField TipoAtaque = new JTextField();
+        TipoAtaque.setBounds(550, 40, 80, 30);
         
-        JLabel TipoAtaque = new JLabel();
-        TipoAtaque.setBounds(570, 40, 60, 15);
+        final JLabel JL_Guardar = new JLabel("Guardar");
+        JL_Guardar.setBounds(650, 45, 60, 15);
         
-        JLabel JL_Editar = new JLabel("Editar");
-        JL_Editar.setBounds(620, 40, 60, 15);
+        final JLabel JL_Editar = new JLabel("Editar");
+        JL_Editar.setBounds(710, 45, 60,15); 
+        JL_Editar.setVisible(false); 
         
+        final JLabel JL_Eliminar = new JLabel("Eliminar");
+        JL_Eliminar.setBounds(750, 45, 60, 15);
+        JL_Eliminar.setVisible(false); 
         
             ImageIcon icon = new ImageIcon(direccion);
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(),foto.getHeight(),Image.SCALE_DEFAULT));
             foto.setIcon(icono);
-                                
-            Panel.add(foto); 
+            
+            Panel.add(foto);
             Panel.setLayout(null); 
             jTextArea_Catalogo.add(Panel);
             jTextArea_Catalogo.setRows(index);
+            jTextArea_Catalogo.repaint();
             this.repaint();
             this.pack();
-            
-                nombre.setText(JOptionPane.showInputDialog(this,"Ingrese el nombre de la planta..."));
+                 
                 Panel.add(nombre);
-                this.repaint();
-            
-                CantAtaque.setText(JOptionPane.showInputDialog(this,"Ingrese la cantidad de ataque..."));
+                    this.repaint();
                 Panel.add(CantAtaque);
-                this.repaint();
-                
-                CantDef.setText(JOptionPane.showInputDialog(this, "Ingrese la Cantidad de Defensa.."));
+                    this.repaint();
                 Panel.add(CantDef);
-                this.repaint();
-                
-                TipoAtaque.setText(JOptionPane.showInputDialog(this, "Ingrese el tipo de ataque (Directo o Disparo)..")); 
+                    this.repaint();
                 Panel.add(TipoAtaque);
-                this.repaint();
-                
+                    this.repaint();
+                Panel.add(JL_Guardar);
+                    Panel.repaint();
                 Panel.add(JL_Editar);
+                    Panel.repaint();
+                Panel.add(JL_Eliminar);
+                    Panel.repaint();
+       
+                JL_Guardar.addMouseListener(new MouseAdapter(){
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                        
+                        if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
+                            JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
+                        }else{
+                            listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+                            nombre.setEditable(false); 
+                            CantAtaque.setEditable(false);
+                            CantDef.setEditable(false);
+                            TipoAtaque.setEditable(false); 
+                            JL_Editar.setVisible(true);
+                            JL_Eliminar.setVisible(true);
+                            JL_Guardar.setVisible(false); 
+                        }
+                    }
+                });
                 
-                listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+                JL_Editar.addMouseListener(new MouseAdapter(){
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                            nombre.setEditable(true); 
+                            CantAtaque.setEditable(true);
+                            CantDef.setEditable(true);
+                            TipoAtaque.setEditable(true);
+                        if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
+                            JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
+                        }else{
+                            listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+                            nombre.setEditable(false); 
+                            CantAtaque.setEditable(false);
+                            CantDef.setEditable(false);
+                            TipoAtaque.setEditable(false); 
+                        }
+                    }
+                });
+                
+                JL_Eliminar.addMouseListener(new MouseAdapter(){
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                        
+//                        if(nombre.getText().isEmpty() || CantAtaque.getText().isEmpty() || CantDef.getText().isEmpty() || TipoAtaque.getText().isEmpty()){
+//                            JOptionPane.showMessageDialog(null, "Ingrese todos los campos ...");
+//                        }else{
+//                            listaPV.InsertAtBack(direccion, nombre.getText(), Integer.parseInt(CantAtaque.getText()),Integer.parseInt(CantDef.getText()),TipoAtaque.getText());
+//                            nombre.setEditable(false); 
+//                            CantAtaque.setEditable(false);
+//                            CantDef.setEditable(false);
+//                            TipoAtaque.setEditable(false); 
+//                        }
+                    }
+                });
+                    
             
             y = y + 130;
             index = index + 15;
-        
-        
         
     }
     
