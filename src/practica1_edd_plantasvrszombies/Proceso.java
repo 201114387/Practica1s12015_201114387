@@ -42,6 +42,7 @@ public class Proceso extends Thread{
                 b.setVisible(false); 
                 System.out.println("Iniciando Hilo");
                 this.progreso++;
+                System.out.println(progreso);
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException ex) {
@@ -49,6 +50,11 @@ public class Proceso extends Thread{
                 }
             }
             if(this.progreso==100){
+                contador--;
+                if(contador != 0)
+                {
+                    
+                }
                 Vida = false;
                 b.setVisible(true); 
                 System.out.println("hilo terminado");
