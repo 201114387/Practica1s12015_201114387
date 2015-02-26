@@ -10,9 +10,9 @@ package practica1_edd_plantasvrszombies;
  * @author ROBIN
  */
 public class Gui_Selección extends javax.swing.JFrame {
-    Lista_Jugadores LJ = new Lista_Jugadores();
-    Lista_Plantas_Zombies Plan = new Lista_Plantas_Zombies();
-    Lista_Plantas_Zombies Zom = new Lista_Plantas_Zombies();
+    static Lista_Jugadores LJ = new Lista_Jugadores();
+    static Lista_Plantas_Zombies Plan = new Lista_Plantas_Zombies();
+    static Lista_Plantas_Zombies Zom = new Lista_Plantas_Zombies();
     /**
      * Creates new form Gui_Selección
      */

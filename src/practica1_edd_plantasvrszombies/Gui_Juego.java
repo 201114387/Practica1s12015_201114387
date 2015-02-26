@@ -5,12 +5,21 @@
  */
 package practica1_edd_plantasvrszombies;
 
+import java.awt.Desktop;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author ROBIN
  */
 public class Gui_Juego extends javax.swing.JFrame {
-    Lista_Jugadores JPZ;
+    Lista_Jugadores JPZ = new Lista_Jugadores();
     Lista_Plantas_Zombies Plantas = new Lista_Plantas_Zombies();
     Lista_Plantas_Zombies Zombies = new Lista_Plantas_Zombies();
     /**
@@ -36,6 +45,10 @@ public class Gui_Juego extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_Zombies = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jLabel_JPlanta = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel_JZombie = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,31 +66,58 @@ public class Gui_Juego extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel2.setText("Zombies");
 
+        jLabel_JPlanta.setFont(new java.awt.Font("Viner Hand ITC", 3, 12)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Viner Hand ITC", 3, 12)); // NOI18N
+        jLabel4.setText("Jugador:");
+
+        jLabel_JZombie.setFont(new java.awt.Font("Viner Hand ITC", 3, 12)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Viner Hand ITC", 3, 12)); // NOI18N
+        jLabel6.setText("Jugador:");
+
         javax.swing.GroupLayout jPanel_FondoLayout = new javax.swing.GroupLayout(jPanel_Fondo);
         jPanel_Fondo.setLayout(jPanel_FondoLayout);
         jPanel_FondoLayout.setHorizontalGroup(
             jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_FondoLayout.createSequentialGroup()
-                .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_FondoLayout.createSequentialGroup()
+                .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_FondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_FondoLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 788, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_JPlanta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_FondoLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel_FondoLayout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 787, Short.MAX_VALUE)
                 .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_FondoLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_FondoLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(44, 44, 44))))
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_FondoLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_JZombie, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel_FondoLayout.setVerticalGroup(
             jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_FondoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
+                .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel_JPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel_JZombie, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -109,7 +149,165 @@ public class Gui_Juego extends javax.swing.JFrame {
         JPZ = juga;
         Plantas = plan;
         Zombies = zomb;
+        jLabel_JPlanta.setText(JPZ.FirstNode.next.Data);
+        jLabel_JZombie.setText(JPZ.FirstNode.next.next.Data); 
+//        Generar_Plantas();
+        Archivo_Jugadores();
+        Archivo_Plantas();
+        Archivo_Zombies();
     };
+    
+    public void Generar_Plantas(){
+        int contador = JPZ.FirstNode.next.Cantidad;
+        JLabel imagen = new JLabel();
+        imagen.setSize(100,100); 
+        ImageIcon icon = new ImageIcon(Plantas.FirsNod.Archivo);
+        Icon icono = new ImageIcon(icon.getImage().getScaledInstance(imagen.getWidth(),imagen.getHeight(),Image.SCALE_DEFAULT));
+        imagen.setIcon(icono);
+        jTextArea_Plantas.add(imagen);
+    }
+    
+    public void Archivo_Jugadores(){
+        try {
+            PrintWriter escritor = new PrintWriter(new FileWriter("Jugadores.dot"));
+            Lista_Jugadores.Nodo Ju = JPZ.FirstNode;
+            escritor.write("digraph G{\n"); 
+            while(Ju != null){
+                if(Ju.next != null){
+                    escritor.write(Ju.Data + "->"+ Ju.next.Data+"\n");
+                    escritor.flush();
+                    Lista_Campos.Nodo_Campo NC = Ju.LC.FirstNodo;
+                    if(NC!=null){
+                        escritor.write(Ju.Data + "->" + NC.Campo + "\n");
+                        while(NC != null){
+                            if(NC.sig != null){
+                                escritor.write(NC.Campo + "->" + NC.sig.Campo + "\n"); 
+                                escritor.flush();
+                            } 
+                        NC = NC.sig;
+                        }
+                    }
+                }else{
+                    Lista_Campos.Nodo_Campo NC = Ju.LC.FirstNodo;
+                    if(NC!=null){
+                        escritor.write(Ju.Data + "->" + NC.Campo + "\n");
+                        while(NC != null){
+                            if(NC.sig != null){
+                                escritor.write(NC.Campo + "->" + NC.sig.Campo + "\n"); 
+                                escritor.flush();
+                            } 
+                        NC = NC.sig;
+                        }
+                    }
+                }
+                Ju = Ju.next;
+            }
+            escritor.write("}");
+            escritor.flush();
+            
+            
+            String dotPath = "C:\\Program Files\\Graphviz2.30\\bin\\dot.exe";
+            String fileInputPath = "Jugadores.dot";
+            String fileOutputPath = "Jugadores.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+            
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            
+            Runtime rt = Runtime.getRuntime();
+            rt.exec(cmd);
+            File file = new File("Jugadores.jpg");
+            Desktop.getDesktop().open(file); 
+            
+        } catch (Exception e) {
+        }
+        
+    }
+    
+    public void Archivo_Plantas(){
+        try {
+            PrintWriter escritor = new PrintWriter(new FileWriter("Plantas.dot"));
+            Lista_Plantas_Zombies.Nodo_PZ NP = Plantas.FirsNod;
+            escritor.write("digraph G{\n"); 
+            while(NP != null){
+                if(NP.next != null){
+                    escritor.write(NP.Name + "->"+ NP.next.Name+"\n");
+                    escritor.flush();
+                }else{
+                    escritor.write(NP.Name); 
+                    escritor.flush();
+                }
+                NP = NP.next;
+            }
+            escritor.write("}");
+            escritor.flush();
+            
+            String dotPath = "C:\\Program Files\\Graphviz2.30\\bin\\dot.exe";
+            String fileInputPath = "Plantas.dot";
+            String fileOutputPath = "Plantas.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+            
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            
+            Runtime rt = Runtime.getRuntime();
+            rt.exec(cmd);
+            File file = new File("Plantas.jpg");
+            Desktop.getDesktop().open(file);
+            
+        } catch (Exception e) {
+        }
+    }
+    
+    public void Archivo_Zombies(){
+        try {
+            PrintWriter escritor = new PrintWriter(new FileWriter("Zombies.dot"));
+            Lista_Plantas_Zombies.Nodo_PZ NZ = Zombies.FirsNod;
+            escritor.write("digraph G{\n"); 
+            while(NZ != null){
+                if(NZ.next != null){
+                    escritor.write(NZ.Name + "->"+ NZ.next.Name+"\n");
+                    escritor.flush();
+                }else{
+                    escritor.write(NZ.Name); 
+                    escritor.flush();
+                }
+                NZ = NZ.next;
+            }
+            escritor.write("}");
+            escritor.flush();
+            
+            String dotPath = "C:\\Program Files\\Graphviz2.30\\bin\\dot.exe";
+            String fileInputPath = "Zombies.dot";
+            String fileOutputPath = "Zombies.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+            
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            
+            Runtime rt = Runtime.getRuntime();
+            rt.exec(cmd);
+            File file = new File("Zombies.jpg");
+            Desktop.getDesktop().open(file);
+            
+        } catch (Exception e) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -148,6 +346,10 @@ public class Gui_Juego extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel_JPlanta;
+    private javax.swing.JLabel jLabel_JZombie;
     private javax.swing.JPanel jPanel_Fondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

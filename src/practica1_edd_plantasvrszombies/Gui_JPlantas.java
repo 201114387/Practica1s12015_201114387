@@ -145,7 +145,7 @@ public class Gui_JPlantas extends javax.swing.JFrame {
                     lista.aux.LC.InsertAtBack(data);
                 }
                 else{
-                    lista.InsertAtBack("Lista Jugadores", 0);
+                    lista.InsertAtBack("Lista_Jugadores", 0);
                     lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
                     lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
                     lista.aux.LC.InsertAtBack(data);
@@ -169,18 +169,19 @@ public class Gui_JPlantas extends javax.swing.JFrame {
         {
             lista.Buscar(jTextField_Nombre_JPlantas.getText(), lista.FirstNode);
             if(lista.aux != null){
-                Gui_Selección s = new Gui_Selección();
-                s.setVisible(true);
-                this.dispose();
-                s.show();
+                  this.setVisible(false); 
+//                Gui_Selección s = new Gui_Selección();
+//                s.setVisible(true);
+//                this.dispose();
+//                s.show();
             }else{
-                lista.InsertAtBack("Lista Jugadores", 0);
+                lista.InsertAtBack("Lista_Jugadores", 0);
                 lista.InsertAtBack(jTextField_Nombre_JPlantas.getText(), Integer.valueOf(jTextField_Cantidad_JPlantas.getText())); 
-
-                Gui_Selección s = new Gui_Selección();
-                s.setVisible(true);
-                this.dispose();
-                s.show();
+                    this.setVisible(false); 
+//                Gui_Selección s = new Gui_Selección();
+//                s.setVisible(true);
+//                this.dispose();
+//                s.show();
             }
             
         }

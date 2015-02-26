@@ -1,0 +1,6 @@
+digraph G{
+Lista_Jugadores->Robin
+Robin->Julio
+Robin->edad_30
+Julio->altura1
+}

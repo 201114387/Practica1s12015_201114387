@@ -161,9 +161,10 @@ public class Gui_Zombies extends javax.swing.JFrame {
         
         Gui_Selección s = new Gui_Selección();
         s.Recibir_Zombies(listaZ); 
-        s.setVisible(true);
-        this.dispose();
-        s.show();
+        this.setVisible(false); 
+//        s.setVisible(true);
+//        this.dispose();
+//        s.show();
     }//GEN-LAST:event_Btn_AceptarActionPerformed
     
     public void Panel_Personajes(final String direccion){
