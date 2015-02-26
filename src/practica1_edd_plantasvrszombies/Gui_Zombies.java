@@ -143,7 +143,7 @@ public class Gui_Zombies extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFileChooser filechooser = new JFileChooser();
         filechooser.setDialogTitle("Abrir Archivo...");
-        File file1 = new File("C:/Users/ROBIN/Google Drive/2015/1er Semestre/EDD/Laboratorio/Practica 1/Imagenes/Plantas");
+        File file1 = new File("C:/Users/ROBIN/Google Drive/2015/1er Semestre/EDD/Laboratorio/Practica 1/Imagenes/Zombies");
         filechooser.setCurrentDirectory(file1); 
         int result = filechooser.showOpenDialog(null);
         if(result == JFileChooser.APPROVE_OPTION){

@@ -19,6 +19,7 @@ import javax.swing.JLabel;
  * @author ROBIN
  */
 public class Gui_Juego extends javax.swing.JFrame {
+    int y = 0;
     Lista_Jugadores JPZ = new Lista_Jugadores();
     Lista_Plantas_Zombies Plantas = new Lista_Plantas_Zombies();
     Lista_Plantas_Zombies Zombies = new Lista_Plantas_Zombies();
@@ -151,7 +152,7 @@ public class Gui_Juego extends javax.swing.JFrame {
         Zombies = zomb;
         jLabel_JPlanta.setText(JPZ.FirstNode.next.Data);
         jLabel_JZombie.setText(JPZ.FirstNode.next.next.Data); 
-//        Generar_Plantas();
+        Generar_Plantas();
         Archivo_Jugadores();
         Archivo_Plantas();
         Archivo_Zombies();
@@ -160,11 +161,15 @@ public class Gui_Juego extends javax.swing.JFrame {
     public void Generar_Plantas(){
         int contador = JPZ.FirstNode.next.Cantidad;
         JLabel imagen = new JLabel();
-        imagen.setSize(100,100); 
+        imagen.setBounds(10, 10 + y, 100, 100);
         ImageIcon icon = new ImageIcon(Plantas.FirsNod.Archivo);
         Icon icono = new ImageIcon(icon.getImage().getScaledInstance(imagen.getWidth(),imagen.getHeight(),Image.SCALE_DEFAULT));
         imagen.setIcon(icono);
         jTextArea_Plantas.add(imagen);
+        Proceso Proc = new Proceso(imagen,contador);
+        Proc.start();
+        Proc.cmd(1);
+        y = y + 110;
     }
     
     public void Archivo_Jugadores(){
